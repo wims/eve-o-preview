@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
+using System.Windows.Forms;
 using EveOPreview.Configuration;
 using EveOPreview.Mediator.Messages;
+using EveOPreview.UI.Hotkeys;
 using EveOPreview.View;
 using MediatR;
 
@@ -22,7 +25,7 @@ namespace EveOPreview.Presenters
 		private readonly IDictionary<string, IThumbnailDescription> _descriptionsCache;
 		private bool _suppressSizeNotifications;
 
-		private bool _exitApplication;
+        private bool _exitApplication;
 		#endregion
 
 		public MainFormPresenter(IApplicationController controller, IMainFormView view, IMediator mediator, IThumbnailConfiguration configuration, IConfigurationStorage configurationStorage)
@@ -45,7 +48,7 @@ namespace EveOPreview.Presenters
 			this.View.ThumbnailStateChanged = this.UpdateThumbnailState;
 			this.View.DocumentationLinkActivated = this.OpenDocumentationLink;
 			this.View.ApplicationExitRequested = this.ExitApplication;
-		}
+        }
 
 		private void Activate()
 		{
@@ -80,7 +83,7 @@ namespace EveOPreview.Presenters
 
 				this._configurationStorage.Save();
 				request.Allow = true;
-				return;
+                return;
 			}
 
 			request.Allow = false;

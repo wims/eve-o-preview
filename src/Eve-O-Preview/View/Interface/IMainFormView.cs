@@ -36,7 +36,7 @@ namespace EveOPreview.View
 		bool ClientHotkeyEnable { get; set; }
 
 
-        void SetDocumentationUrl(string url);
+		void SetDocumentationUrl(string url);
 		void SetVersionInfo(string version);
 		void SetThumbnailSizeLimitations(Size minimumSize, Size maximumSize);
 

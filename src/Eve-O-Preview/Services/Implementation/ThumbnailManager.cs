@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Threading;
@@ -119,9 +120,9 @@ namespace EveOPreview.Services
 				view.ThumbnailActivated = this.ThumbnailActivated;
 				view.ThumbnailDeactivated = this.ThumbnailDeactivated;
 
-				view.RegisterHotkey(this._configuration.GetClientHotkey(view.Title));
+                view.RegisterHotkey(this._configuration.ClientHotkeyEnable ? this._configuration.GetClientHotkey(view.Title) : System.Windows.Forms.Keys.None);
 
-				this.ApplyClientLayout(view.Id, view.Title);
+                this.ApplyClientLayout(view.Id, view.Title);
 
 				// TODO Add extension filter here later
 				if (view.Title != ThumbnailManager.DEFAULT_CLIENT_TITLE)
@@ -146,9 +147,9 @@ namespace EveOPreview.Services
 					view.Title = process.Title;
 					viewsAdded.Add(view.Title);
 
-					view.RegisterHotkey(this._configuration.GetClientHotkey(process.Title));
+                    view.RegisterHotkey(this._configuration.ClientHotkeyEnable ? this._configuration.GetClientHotkey(process.Title) : System.Windows.Forms.Keys.None);
 
-					this.ApplyClientLayout(view.Id, view.Title);
+                    this.ApplyClientLayout(view.Id, view.Title);
 				}
 			}
 
@@ -250,7 +251,7 @@ namespace EveOPreview.Services
 				forceRefresh = false;
 			}
 
-			this.DisableViewEvents();
+            this.DisableViewEvents();
 
 			// Snap thumbnail
 			// No need to update Thumbnails while one of them is highlighted
@@ -317,7 +318,9 @@ namespace EveOPreview.Services
 				{
 					view.Refresh(forceRefresh);
 				}
-			}
+
+                view.RegisterHotkey(this._configuration.ClientHotkeyEnable ? this._configuration.GetClientHotkey(view.Title) : System.Windows.Forms.Keys.None);
+            }
 
 			this.EnableViewEvents();
 		}
