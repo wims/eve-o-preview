@@ -167,7 +167,13 @@ namespace EveOPreview.View
 			set => this.EnableActiveClientHighlightCheckBox.Checked = value;
 		}
 
-		public Color ActiveClientHighlightColor
+		public bool ClientHotkeyEnable
+		{
+			get => this.EnableClientHotkeysCheckbox.Checked;
+			set => this.EnableClientHotkeysCheckbox.Checked = value;
+		}
+
+        public Color ActiveClientHighlightColor
 		{
 			get => this._activeClientHighlightColor;
 			set

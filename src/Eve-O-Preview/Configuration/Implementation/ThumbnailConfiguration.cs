@@ -53,6 +53,8 @@ namespace EveOPreview.Configuration.Implementation
 			this.EnableActiveClientHighlight = false;
 			this.ActiveClientHighlightColor = Color.GreenYellow;
 			this.ActiveClientHighlightThickness = 3;
+
+			this.ClientHotkeyEnable = true;
 		}
 
 		public bool MinimizeToTray { get; set; }
@@ -118,6 +120,8 @@ namespace EveOPreview.Configuration.Implementation
 		public Color ActiveClientHighlightColor { get; set; }
 
 		public int ActiveClientHighlightThickness { get; set; }
+
+		public bool ClientHotkeyEnable { get; set; }
 
 		[JsonProperty]
 		private Dictionary<string, Dictionary<string, Point>> PerClientLayout { get; set; }

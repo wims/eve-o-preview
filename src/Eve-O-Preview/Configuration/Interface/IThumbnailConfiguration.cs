@@ -38,7 +38,9 @@ namespace EveOPreview.Configuration
 		Color ActiveClientHighlightColor { get; set; }
 		int ActiveClientHighlightThickness { get; set; }
 
-		Point GetDefaultThumbnailLocation();
+        bool ClientHotkeyEnable { get; set; }
+
+        Point GetDefaultThumbnailLocation();
 		Point GetThumbnailLocation(string currentClient, string activeClient, Point defaultLocation);
 		void SetThumbnailLocation(string currentClient, string activeClient, Point location);
 

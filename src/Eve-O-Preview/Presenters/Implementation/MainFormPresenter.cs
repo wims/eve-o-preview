@@ -122,6 +122,7 @@ namespace EveOPreview.Presenters
 			this.View.ShowThumbnailFrames = this._configuration.ShowThumbnailFrames;
 			this.View.EnableActiveClientHighlight = this._configuration.EnableActiveClientHighlight;
 			this.View.ActiveClientHighlightColor = this._configuration.ActiveClientHighlightColor;
+			this.View.ClientHotkeyEnable = this._configuration.ClientHotkeyEnable;
 		}
 
 		private async void SaveApplicationSettings()
@@ -153,7 +154,10 @@ namespace EveOPreview.Presenters
 			this._configuration.EnableActiveClientHighlight = this.View.EnableActiveClientHighlight;
 			this._configuration.ActiveClientHighlightColor = this.View.ActiveClientHighlightColor;
 
-			this._configurationStorage.Save();
+			this._configuration.ClientHotkeyEnable = this.View.ClientHotkeyEnable;
+
+
+            this._configurationStorage.Save();
 
 			this.View.RefreshZoomSettings();
 
